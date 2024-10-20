@@ -43,5 +43,12 @@ public class ChessBoard {
             board[1][i] = new Pawn(piceColor.BLACK, new Position(1,i));
             board[6][i] = new Pawn(piceColor.WHITE, new Position(6,i));
         }
+        public void movePiece(Position start, Position end){
+            if (board[start.getRow()][start.getColumn()] != null && board[start.getRow()][start.getColumn()].isValidMove(end, board)) {
+                board[end.getRow()][end.getColumn()] = board[start.getRow()][start.getColumn()];
+                board[end.getRow()][end.getColumn()].setPosition(end);
+                board[start.getRow()][start.getColumn()] = null;
+            }
+        }
     }
 }
