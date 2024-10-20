@@ -3,7 +3,7 @@ package com.gnsr.javachessgame;
 import javax.swing.text.Position;
 
 public abstract class Piece {
-    protected Positiion position;
+    protected Position position;
     protected PieceColor color;
 
     public Piece(PieceColor color, Position position){
@@ -16,11 +16,11 @@ public abstract class Piece {
         return color;
     }
 
-    public Positiion getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Positiion position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
     public abstract booleanisValidMove(Position newPosition, Piece[][] board);
