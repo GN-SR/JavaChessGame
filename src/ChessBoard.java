@@ -1,6 +1,5 @@
-package com.gnsr.javachessgame;
-
 import javax.swing.text.Position;
+
 
 public class ChessBoard {
     private Piece[][] board;
@@ -51,4 +50,5 @@ public class ChessBoard {
             }
         }
     }
+}{
 }

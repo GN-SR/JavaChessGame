@@ -1,4 +1,4 @@
-package com.gnsr.javachessgame;
+
 
 import javax.swing.text.Position;
 

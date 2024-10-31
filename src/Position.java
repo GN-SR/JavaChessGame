@@ -1,4 +1,4 @@
-package com.gnsr.javachessgame;
+
 
 public class Position {
     private int row;
