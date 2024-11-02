@@ -10,7 +10,7 @@ Welcome to this beginner-friendly project tutorial! In this repository, you’ll
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
+
 
 
 ## Introduction
@@ -77,17 +77,5 @@ Once the application is running, you can:
 
 This game can be played in a local, turn-based mode. It does not support network play or AI opponents at this stage.
 
-## Project Structure
 
-The project’s main structure is as follows:
-JavaChessGame/
-├── src/                       # Main directory for source code
-│   ├── Main.java              # Entry point of the application
-│   ├── ChessBoard.java        # Manages the chessboard layout and updates
-│   ├── Piece.java             # Defines the properties and behavior of chess pieces
-│   ├── MoveValidator.java     # Validates moves according to chess rules
-│   ├── GameController.java    # Manages game state, player turns, and game events
-│   ├── ChessGameUI.java        # Handles the user interface with Java Swing components
-├── README.md                  # Project README file
-└── LICENSE                    # License for the project (e.g., MIT License)
 
