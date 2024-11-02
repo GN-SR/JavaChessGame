@@ -46,7 +46,7 @@ To get started with building your own Java chess game, follow these steps:
 1. **Clone the Repository**:
     ```bash
     git clone https://github.com/GN-SR/JavaChessGame.git
-    cd java-chess-game
+    cd JavaChessGame
     ```
 2. **Set Up Your Development Environment**:
    - Make sure you have the latest version of Java installed (Java 8 or higher is recommended).
