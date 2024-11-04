@@ -91,4 +91,15 @@ public class ChessGame {
             piece.setPosition(new Position(row, column));
         }
     }
+    //doubt from here
+    public ChessBoard getBoard(){
+        return this.board;
+    }
+    public void resetGame() {
+        this.board = new ChessBoard();
+        this.whiteTurn = true;
+    }
+    public PieceColor getCurrentPlayerColor(){
+        return whiteTurn ? PieceColor.WHITE : PieceColor.BLACK;
+    }
 }
