@@ -77,5 +77,5 @@ Once the application is running, you can:
 
 This game can be played in a local, turn-based mode. It does not support network play or AI opponents at this stage.
 
-
+And this project is still in progress
 
