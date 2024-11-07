@@ -124,4 +124,31 @@ public class ChessGame {
             }
             return false;
         }
+    public List<Position> getLegalMovesForPieceAt(Position position){
+        Piece selectedPiece = board.getPiece(position.getRow(), position.getColumn());
+        if (selectedPiece == null) return new ArrayList<>();
+
+        List<Position> legalMoves = new ArrayList<>();
+        switch (selectedPiece.getClass().getSimpleName()) {
+            case "Pawn":
+                addPawnMoves(position, selectedPiece.getColor(), legalMoves);
+                break;
+            case "Rook":
+                addLineMoves(position, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}, legalMoves);
+                break;
+            case "Knight":
+                addSingleMoves(position, new int[][]{{2, 1}, {2, -1}, {-2, 1}, {-2, -1}, {1, 2}, {-1, 2}, {1, -2}, {-1, -2}}, legalMoves);
+                break;
+            case "Bishop":
+                addLineMoves(position, new int[][]{{1, 1}, {-1, -1}, {1, -1}, {-1, 1}}, legalMoves);
+                break;
+            case "Queen":
+                addLineMoves(position, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}}, legalMoves);
+                break;
+            case "King":
+                addSingleMoves(position, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}}, legalMoves);
+                break;
+        }
+        return legalMoves;
+    }
 }
