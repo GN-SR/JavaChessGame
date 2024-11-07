@@ -17,7 +17,7 @@ public class ChessGameGUI extends JFrame{
         put(Bishop.class, "\u265D");
         put(Queen.class, "\u265B");
         put(King.class, "\u265A");
-    }
+    };
 };
 
 public ChessGameGUI(){
@@ -29,7 +29,7 @@ public ChessGameGUI(){
     pack();
     setVisible(true);
 }
-private void intializeBoard(){
+private void initializeBoard(){
     for (int row = 0; row < squares.length; row++){
         for(int col = 0; col < squares[row].length; col++){
             final int finalRow = row;
@@ -84,7 +84,7 @@ private void checkGameState() {
     }
 }
 public static void main(String[] args){
-    SwingUtilities.invokeLater(ChesssGameGUI::new);
+    SwingUtilities.invokeLater(ChessGameGUI::new);
 }
 private void higlightLegalMoves(Position position){
     List<Position> legalMoves = game.getLegalMovesForPieceAt(position);
@@ -122,4 +122,30 @@ private void checkGameOver(){
             System.exit(0);
         }
     }
+}
+private void highlightLegalMoves(Position position) {
+    List<Position> legalMoves = game.getLegalMovesForPieceAt(position);
+    for (Position move : legalMoves) {
+        squares[move.getRow()][move.getColumn()].setBackground(Color.GREEN);
+    }
+}
+private void clearHighlights() {
+    for(int row = 0; row < 8; row++){
+        for(int col = 0; col < 8; col++){
+            squares[row][col].setBackground((row + col) % 2 == 0 ? Color.LIGHT_GRAY : new Color(205, 133, 63));
+        }
+    }
+}
+private void addGameResetOption(){
+    JMenuBar menuBar = new JMenuBar();
+    JMenu gameMenu = new JMenu("Game");
+    JMenuItem resetItem = new JMenuItem("Reset");
+    resetItem.addActionListener(e -> resetGame());
+    gameMenu.add(resetItem);
+    menuBar.add(gameMenu);
+    setJmenuBar(menuBar);
+}
+private void resetGame() {
+    game.resetGame();
+    refreshBoard();
 }
