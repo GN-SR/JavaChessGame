@@ -10,17 +10,19 @@ public class ChessGameGUI extends JFrame {
     private final ChessSquareComponent[][] squares = new ChessSquareComponent[8][8];
     private final ChessGame game = new ChessGame();
 
-    private final Map<Class<? extends Piece>, String> pieceUnicodeMap = new HashMap<>() {{
-        put(Pawn.class, "\u265F");
-        put(Rook.class, "\u265C");
-        put(Knight.class, "\u265E");
-        put(Bishop.class, "\u265D");
-        put(Queen.class, "\u265B");
-        put(King.class, "\u265A");
-    }};
+    private final Map<Class<? extends Piece>, String> pieceUnicodeMap = new HashMap<>() {
+        {
+            put(Pawn.class, "\u265F");
+            put(Rook.class, "\u265C");
+            put(Knight.class, "\u265E");
+            put(Bishop.class, "\u265D");
+            put(Queen.class, "\u265B");
+            put(King.class, "\u265A");
+        }
+    };
 
     public ChessGameGUI() {
-        setTitle("Chess");
+        setTitle("Chess Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(8, 8));
         initializeBoard();
@@ -54,6 +56,7 @@ public class ChessGameGUI extends JFrame {
             for (int col = 0; col < 8; col++) {
                 Piece piece = board.getPiece(row, col);
                 if (piece != null) {
+                    // If using Unicode symbols:
                     String symbol = pieceUnicodeMap.get(piece.getClass());
                     Color color = (piece.getColor() == PieceColor.WHITE) ? Color.WHITE : Color.BLACK;
                     squares[row][col].setPieceSymbol(symbol, color);
@@ -86,17 +89,6 @@ public class ChessGameGUI extends JFrame {
         }
     }
 
-    private void checkGameOver() {
-        if (game.isCheckmate(game.getCurrentPlayerColor())) {
-            int response = JOptionPane.showConfirmDialog(this, "Checkmate! Would you like to play again?", "Game Over", JOptionPane.YES_NO_OPTION);
-            if (response == JOptionPane.YES_OPTION) {
-                resetGame();
-            } else {
-                System.exit(0);
-            }
-        }
-    }
-
     private void highlightLegalMoves(Position position) {
         List<Position> legalMoves = game.getLegalMovesForPieceAt(position);
         for (Position move : legalMoves) {
@@ -125,7 +117,18 @@ public class ChessGameGUI extends JFrame {
     private void resetGame() {
         game.resetGame();
         refreshBoard();
-        clearHighlights();
+    }
+
+    private void checkGameOver() {
+        if (game.isCheckmate(game.getCurrentPlayerColor())) {
+            int response = JOptionPane.showConfirmDialog(this, "Checkmate! Would you like to play again?", "Game Over",
+                    JOptionPane.YES_NO_OPTION);
+            if (response == JOptionPane.YES_OPTION) {
+                resetGame();
+            } else {
+                System.exit(0);
+            }
+        }
     }
 
     public static void main(String[] args) {
