@@ -22,7 +22,7 @@ public class ChessSquareComponent extends JButton {
 
         setHorizontalAlignment(SwingConstants.CENTER);
         setVerticalAlignment(SwingConstants.CENTER);
-        setFont(new Font("Serif", Font.BOLD, 36));
+        setFont(new Font("SanSerif", Font.BOLD, 36));
     }
 
     public void setPieceSymbol(String symbol, Color color) {
