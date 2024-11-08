@@ -84,7 +84,7 @@ public class ChessGame {
         return inCheck;
     }
 
-    public Piece[][] getBoard() {
+    public Piece[][] getBoardArray() {
         return board;
     }
     public Piece getPiece(int row, int column) {
@@ -150,5 +150,51 @@ public class ChessGame {
                 break;
         }
         return legalMoves;
+    }
+}
+private void addLineMoves(Position position, int[][] directions, List<Position> legalMoves) {
+    for (int[] d : directions){
+        Position newPos = new Position(position.getRow() + d[0], position.getColumn() + d[1]);
+        while(isPositionOnBoard(newPos)){
+            if(board.getPiece(newPos.getRow(), newPos.getColumn()) == null){
+                legalMoves.add(new Position(newPos.getRow(), newPos.getColumn()));
+                newPos = new Position(newPos.getRow() + d[0], newPos.getColumn() + d[1]);
+            }
+            else {
+                if (board.getPiece(newPos.getRow(), newPos.getColumn()).getColor() != board.getPiece(position.getRow(), position.getColumn()).getColor()){
+                    legalMoves.add(newPos);
+                }
+                break;
+            }
+        }
+    }
+}
+private void addSingleMoves(Position position, int[][] moves, List<Position> legalMoves){
+    for(int[] move : moves){
+        Position newPos = new Position(position.getRow() + move[0], position.getColumn() + move[1]);
+        if(isPositionOnBoard(newPos) && (board.getPiece(newPos.getRow(), newPos.getColumn()) == null || board.getPiece(newPos.getRow(), newPos.getColumn()).getColor() != board.getPiece(position.getRow(), position.getColumn()).getColor())){
+            legalMoves.add(newPos);
+        }
+    }
+}
+private void addPawnMoves(Position position, PieceColor color, List<Position> legalMoves){
+    int direction = color == PieceColor.WHITE ? -1 : 1;
+    Position newPos = new Position(position.getRow() + direction, position.getColumn());
+    if(isPositionOnBoard(newPos) && board.getPiece(newPos.getRow(), newPos.getColumn()) == null){
+        legalMoves.add(newPos);
+    }
+    if((color == PieceColor.WHITE && position.getRow() == 6) || (color == PieceColor.BLACK && position.getRow() == 1)){
+        newPos = new Position(position.getRow() + 2 * direction, position.getColumn());
+        Position intermediatePos = new Position(position.getRow() + direction, position.getColumn());
+        if(isPositionOnBoard(newPos) && board.getPiece(newPos.getRow(), newPos.getColumn()) == null && board.getPiece(intermediatePos.getRow(), intermediatePos.getColumn()) == null){
+            legalMoves.add(newPos);
+        }
+    }
+    int[] captureCols = {position.getColumn() - 1, position.getColumn() + 1};
+    for (int col : captureCols){
+        newPos = new Position(position.getRow(), direction, col);
+        if(isPositionOnBoard(newPos) && board.getPiece(newPos.getRow(), newPos.getColumn()) != null && board.getPiece(newPos.getRow(), newPos.getColumn()).getColor() != color) {
+            legalMoves.add(newPos);
+        }
     }
 }
