@@ -1,5 +1,3 @@
-import javax.swing.text.Position;
-
 public abstract class Piece {
     protected Position position;
     protected PieceColor color;
@@ -20,5 +18,6 @@ public abstract class Piece {
     public void setPosition(Position position) {
         this.position = position;
     }
+
     public abstract boolean isValidMove(Position newPosition, Piece[][] board);
 }

@@ -1,5 +1,3 @@
-import javax.swing.text.Position;
-
 public class ChessBoard {
     private Piece[][] board;
 
