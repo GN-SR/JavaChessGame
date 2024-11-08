@@ -63,7 +63,7 @@ To get started with building your own Java chess game, follow these steps:
 3. **Run with Command Line (Optional)**:
     ```bash
     javac src/*.java
-    java src.Main
+    java src.ChessGameGUI
     ```
 
 ## Usage
