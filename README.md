@@ -1,6 +1,6 @@
-# How To Create A Java Chess Game Application
+# Java Chess Game Application
 
-Welcome to this beginner-friendly project tutorial! In this repository, you’ll find a step-by-step guide and source code for building a **Java Chess Game Application** from scratch. This project is a great way to get hands-on experience with Java development, game programming concepts, and UI design with JavaFX and Swing.
+Welcome to the **Java Chess Game Application!** This project is a functional chess game built entirely in Java, combining core programming principles, game logic, and UI design to deliver an engaging user experience. It’s designed to showcase my skills in Java development, game programming, and graphical user interface design using JavaFX and Swing.
 
 ## Table of Contents
 
