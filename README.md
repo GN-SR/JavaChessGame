@@ -6,7 +6,7 @@ Welcome to the **Java Chess Game Application!** This project is a functional che
 
 - [Introduction](#introduction)
 - [Features](#features)
-- [Project Prerequisites](#project-prerequisites)
+- [Technologies Used](#Technologies-Used)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -15,7 +15,8 @@ Welcome to the **Java Chess Game Application!** This project is a functional che
 
 ## Introduction
 
-This tutorial provides a comprehensive walkthrough on how to build a **Java Chess Game Application**. The focus is on helping beginners understand Java’s core features by implementing a functional chess game with essential game logic, UI components, and interactive features. Whether you are just beginning with Java or looking to develop a portfolio project, this chess game is an engaging way to learn!
+The Java Chess Game Application is a personal project aimed at creating a feature-rich chess game with a user-friendly interface. It implements essential chess mechanics, such as legal moves, turn switching, check and checkmate detection, and more. This project serves as both a demonstration of my programming expertise and a base for further enhancements.
+
 
 ## Features
 
@@ -29,19 +30,16 @@ The Java Chess Game Application includes the following features:
    - Implement a reset option to restart the game.
    - Provide real-time feedback for check and checkmate states.
 
-By following this tutorial and using the source code provided, you’ll be able to expand upon these features or modify the game for your own learning purposes.
 
-## Project Prerequisites
+## Technologies Used
 
-To make the most of this tutorial, it helps to have the following skills:
-
-- **Basic Java Knowledge**: Familiarity with Java syntax and Object-Oriented Programming (OOP) principles such as classes, objects, methods, and inheritance.
-- **Game Programming Concepts**: An understanding of game loops, state management, and event handling will be beneficial.
-- **JavaFX and Swing**: Basic knowledge of JavaFX for UI development; this tutorial will provide guidance, so beginners are welcome!
+- **Java**: Core programming language.
+- **Java Swing**: For building the graphical user interface.
+- **Object Oriented-Programming**: To design and structure the game logic efficiently.
 
 ## Getting Started
 
-To get started with building your own Java chess game, follow these steps:
+To explore or modify this project, follow these steps:
 
 1. **Clone the Repository**:
     ```bash
@@ -77,5 +75,4 @@ Once the application is running, you can:
 
 This game can be played in a local, turn-based mode. It does not support network play or AI opponents at this stage.
 
-And this project is still in progress
 
