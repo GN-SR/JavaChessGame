@@ -101,25 +101,37 @@ public class ChessGame {
             return false;
         }
 
+        // Check if the king can move to a safe square
         Position kingPosition = findKingPosition(kingColor);
-        King king = (King) board.getPiece(kingPosition.getRow(), kingPosition.getColumn());
-
         for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
             for (int colOffset = -1; colOffset <= 1; colOffset++) {
-                if (rowOffset == 0 && colOffset == 0) {
-                    continue;
-                }
-                Position newPosition = new Position(kingPosition.getRow() + rowOffset,
-                        kingPosition.getColumn() + colOffset);
-
-                if (isPositionOnBoard(newPosition) && king.isValidMove(newPosition, board.getBoard())
+                if (rowOffset == 0 && colOffset == 0) continue;
+                Position newPosition = kingPosition.add(rowOffset, colOffset);
+                if (newPosition.isValid() && board.getPiece(kingPosition.getRow(), kingPosition.getColumn()).isValidMove(newPosition, board.getBoard())
                         && !wouldBeInCheckAfterMove(kingColor, kingPosition, newPosition)) {
                     return false;
                 }
             }
         }
-        return true;
+
+        // Check if any piece can block or capture the attacker
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                Piece piece = board.getPiece(row, col);
+                if (piece != null && piece.getColor() == kingColor) {
+                    List<Position> legalMoves = getLegalMovesForPieceAt(new Position(row, col));
+                    for (Position move : legalMoves) {
+                        if (!wouldBeInCheckAfterMove(kingColor, new Position(row, col), move)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true; // No valid moves, checkmate
     }
+
 
     private boolean isPositionOnBoard(Position position) {
         return position.getRow() >= 0 && position.getRow() < board.getBoard().length &&
