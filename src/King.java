@@ -1,5 +1,5 @@
-public class King extends Piece {
-    public King(PieceColor color, Position position) {
+public class Bishop extends Piece {
+    public Bishop(PieceColor color, Position position) {
         super(color, position);
     }
 
@@ -8,13 +8,27 @@ public class King extends Piece {
         int rowDiff = Math.abs(position.getRow() - newPosition.getRow());
         int colDiff = Math.abs(position.getColumn() - newPosition.getColumn());
 
-        boolean isOneSquareMove = rowDiff <= 1 && colDiff <= 1 && !(rowDiff == 0 && colDiff == 0);
-
-        if (!isOneSquareMove) {
+        if (rowDiff != colDiff) {
             return false;
         }
 
+        int rowStep = newPosition.getRow() > position.getRow() ? 1 : -1;
+        int colStep = newPosition.getColumn() > position.getColumn() ? 1 : -1;
+        int steps = rowDiff - 1;
+
+        for (int i = 1; i <= steps; i++) {
+            if (board[position.getRow() + i * rowStep][position.getColumn() + i * colStep] != null) {
+                return false;
+            }
+        }
+
         Piece destinationPiece = board[newPosition.getRow()][newPosition.getColumn()];
-        return destinationPiece == null || destinationPiece.getColor() != this.getColor();
+        if (destinationPiece == null) {
+            return true;
+        } else if (destinationPiece.getColor() != this.getColor()) {
+            return true;
+        }
+
+        return false;
     }
 }
